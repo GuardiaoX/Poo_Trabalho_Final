@@ -3,11 +3,11 @@ package cargos;
 public abstract class Pessoa {
 	String nome, senha, cpf;
 	tipoPessoa tipoPessoa;
-	
+
 	public Pessoa() {
 	}
-	
 
+//Gets e Setters de pessoa
 	public String getNome() {
 		return nome;
 	}
