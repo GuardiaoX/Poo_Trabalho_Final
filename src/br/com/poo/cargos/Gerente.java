@@ -1,4 +1,4 @@
-package cargos;
+package br.com.poo.cargos;
 
 public class Gerente extends Funcionario {
 

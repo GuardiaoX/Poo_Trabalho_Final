@@ -1,9 +1,9 @@
-package sitema;
+package br.com.poo.sistema;
 
 import javax.swing.JOptionPane;
 
-import cargos.Funcionario;
-import cargos.Gerente;
+import br.com.poo.cargos.Funcionario;
+import br.com.poo.cargos.Gerente;
 
 //Qualquer coisa aqui pode ser ignorada, foi apenas teste
 

@@ -1,4 +1,4 @@
-package cargos;
+package br.com.poo.cargos;
 
 public abstract class Pessoa {
 	String nome, senha, cpf;
