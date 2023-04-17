@@ -9,14 +9,14 @@ public class MenuCliente {
 
 		int conta = 3;
 
-		Object[] opcoesCliente = { "1. Verificar saldo", "2. Sacars", "3. Depositar", "4. Transferir" };
+		Object[] opcoesCliente = { "1. Verificar saldo", "2. Sacar", "3. Depositar", "4. Transferir" };
 
-		Object[] opcoesClientep = { "1. Verificar saldo", "2. Sacars", "3. Depositar", "4. Transferir",
+		Object[] opcoesClientep = { "1. Verificar saldo", "2. Sacar", "3. Depositar", "4. Transferir",
 				"5. Relatório da Poupança" };
-		Object[] opcoesClientec = { "1. Verificar saldo", "2. Sacars", "3. Depositar", "4. Transferir",
+		Object[] opcoesClientec = { "1. Verificar saldo", "2. Sacar", "3. Depositar", "4. Transferir",
 				"5. Relatório de Tributos" };
-		Object[] opcoesClientea = { "1. Verificar saldo", "2. Sacars", "3. Depositar", "4. Transferir",
-				"5. Relatório da Poupança", "6.Relatório de Tributos" };
+		Object[] opcoesClientea = { "1. Verificar saldo", "2. Sacar", "3. Depositar", "4. Transferir",
+				"5. Relatório da poupança", "6. Relatório de tributos" };
 		if (conta == 1) {
 			opcoesCliente = opcoesClientep;
 		} else if (conta == 2) {
@@ -27,10 +27,10 @@ public class MenuCliente {
 
 		// Inicia o ciclo do menu
 		while (true) {
-			Object valorSelecionado = JOptionPane.showInputDialog(null, "Menu", "Opção",
+			Object valorSelecionadocli = JOptionPane.showInputDialog(null, "Menu", "Opção",
 					JOptionPane.INFORMATION_MESSAGE, null, opcoesCliente, opcoesCliente[0]);
 
-			switch (valorSelecionado.toString().substring(0, 1)) {
+			switch (valorSelecionadocli.toString().substring(0, 1)) {
 			case "1":
 				// Verificar Saldo
 				JOptionPane.showMessageDialog(null, "Saldo disponível: RS$" + "3000");

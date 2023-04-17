@@ -1,5 +1,7 @@
 package br.com.poo.contas;
 
-public class ContaCorrente {
+public class ContaCorrente extends Conta{
+	TipoConta tipoconta = TipoConta.CORRENTE;
+	
 
 }
