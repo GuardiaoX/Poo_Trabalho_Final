@@ -9,6 +9,7 @@ public class Presidente extends Funcionario {
 	
 	public Presidente() {
 		mapaPresidente.putIfAbsent(nome, this);
+		mapaFuncionario.putIfAbsent(nome, this);
 		mapaPessoa.putIfAbsent(nome, this);
 	}
 }

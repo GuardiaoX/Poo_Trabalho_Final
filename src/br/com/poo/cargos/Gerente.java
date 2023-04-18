@@ -11,6 +11,7 @@ public class Gerente extends Funcionario {
 		this.setSenha(senha);
 		this.setCpf(cpf);
 		mapaGerente.putIfAbsent(nome, this);
+		mapaFuncionario.putIfAbsent(nome, this);
 		mapaPessoa.putIfAbsent(nome, this);
 	}
 

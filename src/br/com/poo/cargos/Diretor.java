@@ -8,6 +8,7 @@ public class Diretor extends Funcionario {
 	
 	public Diretor() {
 		mapaDiretor.putIfAbsent(nome, this);
+		mapaFuncionario.putIfAbsent(nome, this);
 		mapaPessoa.putIfAbsent(nome, this);
 	}
 }

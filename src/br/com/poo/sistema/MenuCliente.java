@@ -7,7 +7,7 @@ public class MenuCliente {
 
 	public static void main(String[] args) {
 
-		int conta = 3;
+		int conta = 2;
 
 		Object[] opcoesCliente = { "1. Verificar saldo", "2. Sacar", "3. Depositar", "4. Transferir" };
 

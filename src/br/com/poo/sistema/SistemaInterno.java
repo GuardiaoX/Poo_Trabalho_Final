@@ -21,7 +21,6 @@ public class SistemaInterno {
 		
 		for(Map.Entry<String,Pessoa> entry : Pessoa.mapaPessoa.entrySet()){
 			System.out.println(entry.getValue());
-			
 		}
 		
 		

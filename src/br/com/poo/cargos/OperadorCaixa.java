@@ -8,6 +8,7 @@ public class OperadorCaixa extends Funcionario{
 	
 	public OperadorCaixa() {
 		mapaOperadorCaixa.putIfAbsent(nome, this);
+		mapaFuncionario.putIfAbsent(nome, this);
 		mapaPessoa.putIfAbsent(nome, this);
 	}	
 }
