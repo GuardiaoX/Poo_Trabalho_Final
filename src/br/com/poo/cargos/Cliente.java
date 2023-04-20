@@ -11,7 +11,7 @@ public class Cliente extends Pessoa{
 		this.setNome(nome);
 		this.setSenha(senha);
 		this.setCpf(CPF);
-		this.setTipoPessoa(br.com.poo.cargos.tipoPessoa.CLIENTE);
+		this.setTipoPessoa(br.com.poo.cargos.TipoPessoa.CLIENTE);
 		mapaCliente.putIfAbsent(nome, this);
 		mapaPessoa.putIfAbsent(nome, this);
 	}

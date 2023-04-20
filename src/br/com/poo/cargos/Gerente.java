@@ -10,10 +10,9 @@ public class Gerente extends Funcionario {
 		this.setNome(nome);
 		this.setSenha(senha);
 		this.setCpf(cpf);
-		mapaGerente.putIfAbsent(nome, this);
+		this.tipoFuncionario = TipoFuncionario.GERENTE;
 		mapaFuncionario.putIfAbsent(nome, this);
 		mapaPessoa.putIfAbsent(nome, this);
 	}
-
 
 }

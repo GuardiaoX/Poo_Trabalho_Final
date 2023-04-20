@@ -1,5 +1,5 @@
 package br.com.poo.cargos;
 
-public enum tipoPessoa {
+public enum TipoPessoa {
 	CLIENTE, FUNCIONARIO;
 }

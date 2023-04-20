@@ -5,7 +5,7 @@ import java.util.Map;
 
 public abstract class Pessoa {
 	String nome, senha, cpf;
-	tipoPessoa tipoPessoa;
+	TipoPessoa tipoPessoa;
 	public static Map<String, Pessoa> mapaPessoa = new HashMap<String, Pessoa>();
 
 	public Pessoa() {
@@ -36,17 +36,16 @@ public abstract class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public tipoPessoa getTipoPessoa() {
+	public TipoPessoa getTipoPessoa() {
 		return tipoPessoa;
 	}
 
-	public void setTipoPessoa(tipoPessoa tipoPessoa) {
+	public void setTipoPessoa(TipoPessoa tipoPessoa) {
 		this.tipoPessoa = tipoPessoa;
 	}
 
 	@Override
 	public String toString() {
-		return "Pessoa [nome=" + nome + ", senha=" + senha + ", cpf=" + cpf + ", tipoPessoa=" + tipoPessoa + "]";
+		return "Nome: " + nome + ", Senha: " + senha + ", CPF: " + cpf;
 	}
-
 }

@@ -1,10 +1,15 @@
 package br.com.poo.sistema;
 
+import java.awt.geom.GeneralPath;
+import java.util.Map;
+
 import javax.swing.JOptionPane;
+
+import br.com.poo.cargos.Gerente;
 
 public class MenuFuncionario {
 	public static void main(String[] args) {
-		int conta = 3;
+		int conta = 2;
 		Object[] opcoesFuncionario = {};
 		Object[] opcoesGerente = { "1. Contas em sua agência", "2. Informações de conta" };
 		Object[] opcoesDiretor = { "1. Relatório de clientes", "2. Relatório de gerentes" };
@@ -37,7 +42,12 @@ public class MenuFuncionario {
 				if (conta == 1) {
 					JOptionPane.showInternalMessageDialog(null, "Relatório:\nNome: \nCPF: ");
 				} else if (conta == 2) {
-					JOptionPane.showInternalMessageDialog(null, "Relatório:\nGerente1\nGerente2");
+					String relatorioGerente = "";
+					for(Map.Entry<String, Gerente> entry : Gerente.mapaGerente.entrySet()) {
+						relatorioGerente += entry.getValue().toString();
+						relatorioGerente += "\n";
+					}
+					JOptionPane.showInternalMessageDialog(null,relatorioGerente);
 				} else if (conta == 3) {
 					JOptionPane.showInternalMessageDialog(null, "Relatório:\nDiretor1\\nGerente2\"");
 				}
