@@ -48,7 +48,3 @@ E um relatório individual de cada cliente.
 -Relatório com o valor total do capital armazenado no banco.
 
 -Relatório parcial de gerente e diretor.
-
-
-
-
