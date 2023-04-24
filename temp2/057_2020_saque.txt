@@ -1,0 +1,8 @@
+*************** SAQUE **************
+Nome: Lucas Silva
+CPF: 057
+Agência: 2020
+Conta: 00203
+Valor: R$ 234.0
+Operação realizada em: 23/04/2023 14:09:18
+************* FIM SAQUE ************

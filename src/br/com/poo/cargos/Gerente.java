@@ -6,51 +6,18 @@ package br.com.poo.cargos;
 //10% da bonificação do Funcionario(R$ 5.00) somado a 15% sobre o seu salário;
 
 public class Gerente extends Funcionario {
-	//public static Map<String, Gerente> mapaGerente = new HashMap<String, Gerente>();
-
-	private String tipoFuncionario;
-	private String nome;
-	private String cpf;
-	private String senha;
-	private Double salario;
-	private String agenciaResp;
+	private String agenciaGerente;
 
 	public Gerente() {
-		super();
 	}
 
-	public Gerente(String tipoFuncionario, String nome, String cpf, String senha, Double salario, String agenciaResp) {
-		super(tipoFuncionario, nome, cpf, senha, salario);
-		this.tipoFuncionario = tipoFuncionario;
-		this.nome = nome;
-		this.cpf = cpf;
-		this.senha = senha;
-		this.salario = salario;
-		this.agenciaResp = agenciaResp;
+	public Gerente(String tipoPessoa, String tipoFuncionario, String nome, String cpf, String senha, String salario,
+			String agenciaGerente) {
+		super(tipoPessoa, tipoFuncionario, nome, cpf, senha, salario);
+		this.agenciaGerente = agenciaGerente;
 	}
 
-	public String getTipoFuncionario() {
-		return tipoFuncionario;
+	public String getAgenciaGerente() {
+		return agenciaGerente;
 	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public Double getSalario() {
-		return salario;
-	}
-
-	public String getAgenciaResp() {
-		return agenciaResp;
-	}
-
 }

@@ -2,6 +2,9 @@ package br.com.poo.sistema;
 
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
+import br.com.poo.sistema.Login;
 /*import java.util.Map;
 import javax.swing.JOptionPane;
 import br.com.poo.cargos.Cliente;
@@ -9,14 +12,13 @@ import br.com.poo.cargos.Funcionario;
 import br.com.poo.cargos.Gerente;
 import br.com.poo.cargos.Pessoa;*/
 
-public class SistemaInterno {
+public class SistemaInternob {
 	public static void main(String[] args) throws IOException {
-
-		LeituraEscrita.leitor("banco.txt");
-
-		HomePage homePage = new HomePage();
-
-		homePage.login();
-
+		LeitorBanco.leitor("banco.txt");	
+		Login.login();
+		if (Login.loginVerif == false) {
+			JOptionPane.showMessageDialog(null, Login.fimPrograma);
+			System.exit(0);
+		}
 	}
 }

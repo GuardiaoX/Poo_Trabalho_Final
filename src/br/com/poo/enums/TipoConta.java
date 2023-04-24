@@ -1,14 +1,12 @@
 package br.com.poo.enums;
 
-public enum ContaEnum {
-
-	CORRENTE("corrente", 1),
-	POUPANCA("poupanca", 2);
+public enum TipoConta {
+	CONT_CORR("CORRENTE", 1), CONT_POU("POUPANCA", 2);
 
 	private String tipoConta;
 	private int id;
-	
-	ContaEnum(String tipoConta, int id) {
+
+	TipoConta(String tipoConta, int id) {
 		this.tipoConta = tipoConta;
 		this.id = id;
 	}
@@ -20,5 +18,4 @@ public enum ContaEnum {
 	public int getId() {
 		return id;
 	}
-	
 }

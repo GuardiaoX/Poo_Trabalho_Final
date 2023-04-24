@@ -1,85 +1,110 @@
 package br.com.poo.contas;
 
-public class ContaPoupanca extends Conta {
-	private Integer totalSaques = 0;
-	private Integer totalDepositos = 0;
-	private Integer totalTransferencias = 0;
-	private Double totalTributado = 0.0;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
-	private Double rendimento;
+import br.com.poo.enums.TipoOperacao;
+import br.com.poo.enums.TributacaoTipo;
+
+public class ContaPoupanca extends Conta {
+	private BigDecimal rendiTaxaAnual = new BigDecimal("14.6"); // OBS: Porcento(%)
+	private BigDecimal rendiTaxaDiario = new BigDecimal("0.0004"); // OBS: Porcento(%)
+	private BigDecimal rendiDiario = new BigDecimal("0.00");
+	private BigDecimal rendiAcumulado = new BigDecimal("0.00");
 
 	public ContaPoupanca() {
-		super();
 	}
 
-	public ContaPoupanca(String tipoConta, String agencia, String numConta, String titular, String cpf, Double saldo) {
-		super(tipoConta, agencia, numConta, titular, cpf, saldo);
+	public ContaPoupanca(String tipoPessoa, String tipoCliente, String nome, String cpf, String senha, String tipoConta, String agencia,
+			String numConta, String saldo) {
+		super(tipoPessoa, tipoCliente, nome, cpf, senha, tipoConta, agencia, numConta, saldo);
 	}
 
-	public Double calcularRendimento() {
-		rendimento = 0.005 * super.getSaldo();
-		return rendimento;
+	public BigDecimal getRendiTaxaAnual() {
+		return rendiTaxaAnual;
 	}
 
-	public Double getTotalTributado() {
-		return totalTributado;
+	public void setRendiTaxaAnual(BigDecimal rendiTaxaAnual) {
+		this.rendiTaxaAnual = rendiTaxaAnual;
 	}
 
-	public static Double previsaoRendimento(Double valor, int dias) {
-		ContaPoupanca conta = new ContaPoupanca();
-		Double rendimentoTotal = conta.calcularRendimento() * dias / 30.0;
-		System.out.println("O valor do rendimento para " + dias + " dias é de: R$%.2f" + rendimentoTotal);
-		return rendimentoTotal;
+	public BigDecimal getRendiTaxaDiario() {
+		return rendiTaxaDiario;
+	}
+
+	public void setRendiTaxaDiario(BigDecimal rendiTaxaDiario) {
+		this.rendiTaxaDiario = rendiTaxaDiario;
+	}
+
+	public BigDecimal getRendiDiario() {
+		return rendiDiario;
+	}
+
+	public BigDecimal getRendiAcumulado() {
+		return rendiAcumulado;
+	}
+
+	public void setRendiAcumulado(BigDecimal rendiAcumulado) {
+		this.rendiAcumulado = rendiAcumulado;
 	}
 
 	@Override
-
-	public void sacar(Double valor) {
-		if (super.saldo >= valor + 0.6) {
-			super.saldo -= valor + 0.6;
-			System.out.println("Operação realizada com sucesso!\n");
-			System.out.printf("Valor sacado: R$%.2f ", valor, "\n");
-			System.out.printf("Taxa para saque: R$ 0.60\n");
-			System.out.printf("Saldo atual: R$%.2f ", super.saldo);
-			++totalSaques;
+	public Boolean deposito(BigDecimal valor) {
+		Boolean paramVerificaSaldo = verificaSaldo(valor, TipoOperacao.DEP.getId(),
+				TributacaoTipo.TRIB_INSENTO.getId());
+		if (paramVerificaSaldo) {
+			tributacaoConta(TipoOperacao.DEP.getId(), TributacaoTipo.TRIB_INSENTO.getId());
+			return super.deposito(valor);
 		} else {
-			System.out.println("Valor inserido + o tributo excede o saldo disponível!");
+			return false;
 		}
 	}
 
 	@Override
+	public Boolean saque(BigDecimal valor) {
+		Boolean paramVerificaSaldo = verificaSaldo(valor, TipoOperacao.SQ.getId(), TributacaoTipo.TRIB_INSENTO.getId());
+		if (paramVerificaSaldo) {
+			tributacaoConta(TipoOperacao.SQ.getId(), TributacaoTipo.TRIB_INSENTO.getId());
+			return super.saque(valor);
 
-	public void depositar(Double valor) {
-		if (super.saldo == null) {
-			super.saldo = 0.0;
 		} else {
-			super.saldo = valor - 0.2;
-			super.saldo += valor;
-			System.out.println("Operação realizada com sucesso!\n");
-			System.out.printf("Valor depositado: R$%.2f ", valor, "\n");
-			System.out.printf("Taxa para depósito: R$ 0.20\n");
-			System.out.printf("Saldo atual: R$%.2f ", super.saldo);
-			++totalDepositos;
+			return false;
 		}
+
 	}
 
 	@Override
-
-	public void transferir(Double valor, Conta destino) {
-		if (super.saldo >= valor + 0.4) {
-			super.saldo -= valor + 0.4;
-			System.out.println("Qual a conta destino?\n");
-			System.out.println("Agencia:");
-			System.out.println("Número da Conta:");
-
-			destino.depositar(valor);
-			System.out.println("Operação realizada com sucesso!\n");
-			System.out.printf("Valor transferido: R$%.2f", valor, "\n");
-			System.out.printf("Taxa de transferência: R$ 0.40\n");
-			System.out.printf("Saldo atual: R$%.2f " + super.saldo);
-			++totalTransferencias;
+	public Boolean transferencia(Conta dest, BigDecimal valor) {
+		Boolean paramVerificaSaldo = verificaSaldo(valor, TipoOperacao.TRANSF.getId(),
+				TributacaoTipo.TRIB_INSENTO.getId());
+		if (paramVerificaSaldo) {
+			tributacaoConta(TipoOperacao.TRANSF.getId(), TributacaoTipo.TRIB_INSENTO.getId());
+			return super.transferencia(dest, valor);
 		} else {
-			System.out.println("Valor inserido + taxa de transferência excede o saldo disponível!");
+			return false;
 		}
+	}
+
+	public Boolean rendiSobreSaldo() {
+		if (getSaldo().compareTo(getParamZero()) > 0) {
+			rendiDiario = getSaldo().multiply(rendiTaxaDiario);
+			deposito(rendiDiario);
+			rendiAcumulado = rendiAcumulado.add(rendiDiario);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public BigDecimal rendiSobreSaldoSimulado(BigDecimal valor, int fimDia, int fimMes, int fimAno) {
+		BigDecimal rendiAcumuladoSimulado;
+		LocalDate inicio = LocalDate.now();
+		LocalDate fim = LocalDate.of(fimAno, fimMes, fimDia);
+		long diferencaDias = ChronoUnit.DAYS.between(inicio, fim);
+		rendiAcumuladoSimulado = rendiTaxaDiario.multiply(valor);
+		rendiAcumuladoSimulado = rendiAcumuladoSimulado.multiply(new BigDecimal(diferencaDias));
+		rendiAcumuladoSimulado = valor.add(rendiAcumuladoSimulado);
+		return rendiAcumuladoSimulado;
 	}
 }

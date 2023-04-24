@@ -1,5 +1,6 @@
 package br.com.poo.cargos;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -10,50 +11,39 @@ public abstract class Funcionario extends Pessoa {
 	public static TreeMap<String, Funcionario> ordenaFuncionarios = new TreeMap<>();
 
 	private String tipoFuncionario;
-	private String nome;
-	private String cpf;
-	private String senha;
-	private Double salario;
+	private BigDecimal salario;
 
 	public Funcionario() {
-		super();
 	}
 
-	public Funcionario(String tipoFuncionario, String nome, String cpf, String senha, Double salario) {
-		super();
+	public Funcionario(String tipoPessoa, String tipoFuncionario, String nome, String cpf, String senha, String salario) {
+		super(tipoPessoa, nome, cpf, senha);
 		this.tipoFuncionario = tipoFuncionario;
-		this.nome = nome;
-		this.cpf = cpf;
-		this.senha = senha;
-		this.salario = salario;
+		this.salario = new BigDecimal(salario);
 	}
 
 	public String getTipoFuncionario() {
 		return tipoFuncionario;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public Double getSalario() {
+	public BigDecimal getSalario() {
 		return salario;
 	}
 
-	public Double calcularFolhaPagamento(Funcionario nome) {
-		return nome.getSalario() + nome.getBonificacao();
+	
+	public BigDecimal calcularFolhaPagamento(Funcionario nome) {
+		return nome.getSalario().add(nome.getBonificacao());
 	}
 
-	public Double getBonificacao() {
-		return getSalario() * 0.10;
+	public BigDecimal getBonificacao() {
+		return getSalario().multiply(new BigDecimal("0.10"));
 	}
 
 }
+
+
+
+
+
+
+

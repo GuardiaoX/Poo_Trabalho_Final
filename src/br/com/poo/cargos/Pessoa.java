@@ -7,12 +7,14 @@ public abstract class Pessoa {
 	private String nome;
 	private String cpf;
 	private String senha;
-	public static Map<String, Pessoa> mapaPessoa = new HashMap<String, Pessoa>();
-
+	private String tipoPessoa;
+	public static Map<String, Pessoa> mapaPessoa = new HashMap<>();
+	
 	public Pessoa() {
 	}
 
-	public Pessoa(String nome, String senha, String cpf) {
+	public Pessoa( String tipoPessoa, String nome, String cpf, String senha) {
+		this.tipoPessoa = tipoPessoa;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
@@ -28,5 +30,9 @@ public abstract class Pessoa {
 
 	public String getCpf() {
 		return cpf;
+	}
+
+	public String getTipoPessoa() {
+		return tipoPessoa;
 	}
 }
