@@ -11,6 +11,7 @@ import br.com.poo.cargos.Funcionario;
 import br.com.poo.contas.Conta;
 
 public class Login {
+	static int tipoPessoaLogin;
 	static String fimPrograma = "Obrigado por utilizar nossos serviços, volte sempre! S2";
 	static boolean loginVerif = false;
 	static Funcionario usuarioFunc;
@@ -43,6 +44,7 @@ public class Login {
 							loginVerif = true;
 							usuarioCl = value;
 							String sucssPrograma = "Logado com sucesso! Bem vindo "+value.getNome()+"!";
+							tipoPessoaLogin = 0;
 							JOptionPane.showMessageDialog(null, sucssPrograma);
 							break;
 						}
@@ -74,6 +76,7 @@ public class Login {
 							loginVerif = true;
 							usuarioFunc = value;
 							String sucssPrograma = "Logado com sucesso! Bem vindo "+value.getNome()+"!";
+							tipoPessoaLogin = 1;
 							JOptionPane.showMessageDialog(null, sucssPrograma);
 							break;
 						}
