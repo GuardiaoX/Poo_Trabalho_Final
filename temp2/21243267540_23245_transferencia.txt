@@ -1,0 +1,14 @@
+===============================================
+COMPROVANTE DE TRANSFERÊNCIA
+===============================================
+Nome do remetente: Cadu
+CPF do remetente: 21243267540
+Agência do remetente: 23245
+Conta do remetente: 321245
+Nome do destinatario: Daniel
+CPF do destinatario: 01243267540
+Agência do destinatario: 03245
+Conta do destinatario: 021245
+Valor: 300.00
+Realizado em: 24/04/2023 18:22:46
+===============================================

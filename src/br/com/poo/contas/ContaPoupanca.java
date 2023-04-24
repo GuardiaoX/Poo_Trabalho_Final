@@ -12,6 +12,7 @@ public class ContaPoupanca extends Conta {
 	private BigDecimal rendiTaxaDiario = new BigDecimal("0.0004"); // OBS: Porcento(%)
 	private BigDecimal rendiDiario = new BigDecimal("0.00");
 	private BigDecimal rendiAcumulado = new BigDecimal("0.00");
+	long diferencaDias;
 
 	public ContaPoupanca() {
 	}
@@ -23,6 +24,10 @@ public class ContaPoupanca extends Conta {
 
 	public BigDecimal getRendiTaxaAnual() {
 		return rendiTaxaAnual;
+	}
+	
+	public long getDiferencaDias() {
+		return diferencaDias;
 	}
 
 	public void setRendiTaxaAnual(BigDecimal rendiTaxaAnual) {
@@ -101,7 +106,7 @@ public class ContaPoupanca extends Conta {
 		BigDecimal rendiAcumuladoSimulado;
 		LocalDate inicio = LocalDate.now();
 		LocalDate fim = LocalDate.of(fimAno, fimMes, fimDia);
-		long diferencaDias = ChronoUnit.DAYS.between(inicio, fim);
+		diferencaDias = ChronoUnit.DAYS.between(inicio, fim);
 		rendiAcumuladoSimulado = rendiTaxaDiario.multiply(valor);
 		rendiAcumuladoSimulado = rendiAcumuladoSimulado.multiply(new BigDecimal(diferencaDias));
 		rendiAcumuladoSimulado = valor.add(rendiAcumuladoSimulado);

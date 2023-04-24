@@ -2,15 +2,11 @@ package br.com.poo.sistema;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Map;
 
 import javax.swing.JOptionPane;
 
-import br.com.poo.cargos.Gerente;
 import br.com.poo.enums.TipoFuncionario;
-import br.com.poo.sistema.Login;
 import br.com.poo.cargos.Funcionario;
-import br.com.poo.sistema.Relatorio;
 
 public class MenuFuncionario {
 	public static void telaFuncionario() throws IOException {
@@ -21,24 +17,18 @@ public class MenuFuncionario {
 		Funcionario func = Login.usuarioFunc;
 		String tipoFunc = func.getTipoFuncionario();
 		String imprssSucss = "Relatório impresso com sucesso!";
+		String faltouTempo = "Em desenvolvimento.";
 		int tipoFuncId = 0;
-
 		if (tipoFunc.equals(TipoFuncionario.PRESIDENTE.getTipoFuncionario())) {
 			opcoesFuncionario = opcoesPresidente;
 			tipoFuncId = 1;
-			
-			
 		} else if (tipoFunc.equals(TipoFuncionario.DIRETOR.getTipoFuncionario())) {
-			JOptionPane.showMessageDialog(null, "Ops...");
 			opcoesFuncionario = opcoesDiretor;
 			tipoFuncId = 2;
-			
-			
 		} else if (tipoFunc.equals(TipoFuncionario.GERENTE.getTipoFuncionario())) {
 			opcoesFuncionario = opcoesGerente;
 			tipoFuncId = 3;
 		}
-
 		while (true) {
 			Object valorSelecionadofun = JOptionPane.showInputDialog(null, "Menu Principal", "Opções",
 					JOptionPane.INFORMATION_MESSAGE, null, opcoesFuncionario, opcoesFuncionario[0]);
@@ -46,50 +36,26 @@ public class MenuFuncionario {
 			case "1":
 				if (tipoFuncId == 1) {
 					Relatorio.relatorioCapitalDoBanco(new BigDecimal("4000.50"));
-					JOptionPane.showInternalMessageDialog(null, imprssSucss);
-							
+					JOptionPane.showInternalMessageDialog(null, imprssSucss);		
 				} else if (tipoFuncId == 2) {
 					Relatorio.relatorioClientesDoBanco();
 					JOptionPane.showInternalMessageDialog(null, imprssSucss);
-							
 				} else if (tipoFuncId == 3) {
-					JOptionPane.showInternalMessageDialog(null, imprssSucss);
+					JOptionPane.showInternalMessageDialog(null, faltouTempo);
 				}
-
 				break;
-
-				
-				
 			case "2":
 				if (tipoFuncId == 1) {
-					JOptionPane.showInternalMessageDialog(null, imprssSucss);
-
-//				} else if (tipoFuncId == 2) {
-//					String relatorioGerente = "";
-//					for (Map.Entry<String, Gerente> entry : Gerente.mapaGerente.entrySet()) {
-//						relatorioGerente += entry.getValue().toString();
-//						relatorioGerente += "\n";
-//					}
-//					JOptionPane.showInternalMessageDialog(null, relatorioGerente);
-//					break;
-//					
-//	
-				} else if (tipoFuncId == 3) {
-					JOptionPane.showInternalMessageDialog(null, imprssSucss);
+					JOptionPane.showInternalMessageDialog(null, faltouTempo);
+				} else if (tipoFuncId == 2) {
+					JOptionPane.showInternalMessageDialog(null, faltouTempo);
 					break;
-					
+				} else if (tipoFuncId == 3) {
+					JOptionPane.showInternalMessageDialog(null, faltouTempo);
+					break;
 				}
 				break;
 			}
 		}
 	}
 }
-
-
-
-
-
-
-
-
-

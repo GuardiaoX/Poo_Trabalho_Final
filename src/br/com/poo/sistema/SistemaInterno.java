@@ -6,12 +6,6 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 import br.com.poo.sistema.Login;
-/*import java.util.Map;
-import javax.swing.JOptionPane;
-import br.com.poo.cargos.Cliente;
-import br.com.poo.cargos.Funcionario;
-import br.com.poo.cargos.Gerente;
-import br.com.poo.cargos.Pessoa;*/
 import br.com.poo.sistema.MenuFuncionario;
 
 
@@ -29,10 +23,5 @@ public class SistemaInterno {
 		else if (Login.tipoPessoaLogin == 1) {
 			MenuFuncionario.telaFuncionario();
 		}
-		
-//		MenuCliente.c
-//		else if (){	
-//		}
-		
 	}
 }

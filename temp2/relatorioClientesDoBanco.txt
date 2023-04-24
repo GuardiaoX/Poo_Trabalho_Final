@@ -1,0 +1,21 @@
+===============================================
+          RELATÓRIO DE CLIENTES DO BANCO       
+===============================================
+
+Conta: 121245
+Titular: Bernardo
+Agência: 83245
+Saldo: R$10000.00
+
+Conta: 321245
+Titular: Cadu
+Agência: 23245
+Saldo: R$5000.00
+
+Conta: 021245
+Titular: Daniel
+Agência: 03245
+Saldo: R$8000.00
+
+Realizado em: 24/04/2023 17:52:32
+===============================================

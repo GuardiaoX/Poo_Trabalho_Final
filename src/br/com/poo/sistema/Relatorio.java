@@ -42,7 +42,7 @@ public abstract class Relatorio {
 	}
 	
 	public static void comprovanteDep(Conta conta, BigDecimal valor) throws IOException {
-		String nomeArquivo = conta.getCpf() + "_" + conta.getAgencia() + "_saque";
+		String nomeArquivo = conta.getCpf() + "_" + conta.getAgencia() + "_deposito";
 		try (BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nomeArquivo + EXTENSAO))) {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 			Date date = new Date();
@@ -161,7 +161,7 @@ public abstract class Relatorio {
 
 	public static void comprovanteRendiSobreSaldoSimulado(Conta conta, BigDecimal valor, long diferencaDias,
 			BigDecimal rendiAcumuladoSimulado) throws IOException {
-		String nomeArquivo = conta.getCpf() + "_" + conta.getAgencia() + "_rendimento";
+		String nomeArquivo = conta.getCpf() + "_" + conta.getAgencia() + "_rendimento_simulado";
 		try (BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nomeArquivo + EXTENSAO))) {
 			String linha = "===============================================";
 			buffWrite.append(linha + "\n");
