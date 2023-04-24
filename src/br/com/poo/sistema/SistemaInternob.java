@@ -20,5 +20,8 @@ public class SistemaInternob {
 			JOptionPane.showMessageDialog(null, Login.fimPrograma);
 			System.exit(0);
 		}
+//		else if (){
+//			
+//		}
 	}
 }
