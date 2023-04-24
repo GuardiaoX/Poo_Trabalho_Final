@@ -1,5 +1,5 @@
 # Poo_Trabalho_Final
-Código que demonstra o sistema bancário do grupo 6
+Sistema bancário do grupo 6
 
 Menus interativos que dão acesso aos usuários sendo eles cliente ou funcionário
 
