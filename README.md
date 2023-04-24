@@ -1,10 +1,10 @@
 # Poo_Trabalho_Final
-Sistema bancário do grupo 6
+O sistema bancário do Grupo 6 oferece uma interface interativa que permite acesso fácil e rápido para clientes e funcionários. Os clientes podem gerenciar suas contas de poupança e corrente com comandos simples como saque, depósito e transferência, além de terem acesso a relatórios financeiros que fornecem informações detalhadas sobre o movimento em suas contas.
 
 Menus interativos que dão acesso aos usuários sendo eles cliente ou funcionário
 
 **Cliente**
-os clientes tem acesso a suas contas seja ela poupança ou corrente.
+Com este sistema bancário intuitivo e funcional, os clientes podem gerenciar suas finanças com facilidade e os funcionários podem acessar as informações necessárias para garantir a melhor gestão das contas e do banco como um todo.
 
 *movimentação
 
@@ -19,7 +19,7 @@ ele também terá acesso a relatórios do movimento financeiro que são:
 
 **Funcionários**
 
-Os funcionário são divididos em Cargos que são: Operador caixa, gerente, diretor e presidente.
+Os funcionários do banco são organizados em diferentes cargos, com diferentes níveis de acesso ao sistema. Os Gerentes têm acesso a relatórios específicos, como o número de contas na agência em que trabalham e relatórios individuais de cada cliente. O Diretor possui acesso a tudo que o Gerente tem e também a um relatório completo de todos os clientes do banco, em ordem alfabética.
 
 **Gerente**
 
@@ -42,6 +42,7 @@ E um relatório individual de cada cliente.
 -Relatório parcial de gerente.
 
 **Presidente**
+Já o Presidente tem acesso a todas as informações do Gerente e do Diretor e também pode acessar um relatório que mostra o valor total do capital armazenado no banco. Além disso, o Presidente pode verificar um relatório parcial do Gerente e do Diretor para obter informações adicionais sobre o desempenho do banco.
 
 -Sendo 1 passo a mais na hieranquia de cargos, o usuário que logar como presidente vai ter acesso a tudo que o Gerente e Diretor tem e em adição:
 
