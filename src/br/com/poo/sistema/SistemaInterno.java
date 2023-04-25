@@ -11,7 +11,8 @@ import br.com.poo.sistema.MenuFuncionario;
 
 public class SistemaInterno {
 	public static void main(String[] args) throws IOException {
-		LeitorBanco.leitor("banco.txt");	
+		LeitorBanco.leitor("banco.txt");
+		JOptionPane.showMessageDialog(null, "xxxXXX Seja bem vindo ao GuardiãoX Bank XXXxxx");
 		Login.login();
 		if (Login.loginVerif == false) {
 			JOptionPane.showMessageDialog(null, Login.fimPrograma);

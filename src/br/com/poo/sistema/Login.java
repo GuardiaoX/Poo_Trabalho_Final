@@ -16,7 +16,7 @@ public class Login {
 	static boolean loginVerif = false;
 	static Funcionario usuarioFunc;
 	static Conta usuarioCl;
-	
+
 	private Login() {
 	}
 
@@ -34,7 +34,7 @@ public class Login {
 					"Escolha uma opção para prosseguir:", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
 					null, tipoPessoa, tipoPessoa[0]);
 			if (entrConfirm == 0) {
-				numConta = JOptionPane.showInputDialog("Digite seu úsuario de login: "); //Número da conta
+				numConta = JOptionPane.showInputDialog("Digite seu úsuario de login: "); // Número da conta
 				senha = JOptionPane.showInputDialog("Digite sua senha: ");
 				loginVerif = false;
 				for (Map.Entry<String, Conta> entry : Conta.mapaContas.entrySet()) {
@@ -43,7 +43,7 @@ public class Login {
 						if (value.getSenha().equals(senha)) {
 							loginVerif = true;
 							usuarioCl = value;
-							String sucssPrograma = "Logado com sucesso! Bem vindo "+value.getNome()+"!";
+							String sucssPrograma = "Logado com sucesso! Bem vindo " + value.getNome() + "!";
 							tipoPessoaLogin = 0;
 							JOptionPane.showMessageDialog(null, sucssPrograma);
 							break;
@@ -66,7 +66,7 @@ public class Login {
 					break;
 				}
 			} else {
-				cpf = JOptionPane.showInputDialog("Digite seu úsuario de login: "); //CPF
+				cpf = JOptionPane.showInputDialog("Digite seu úsuario de login: "); // CPF
 				senha = JOptionPane.showInputDialog("Digite sua senha: ");
 				loginVerif = false;
 				for (Entry<String, Funcionario> entry : Funcionario.mapaFuncionarios.entrySet()) {
@@ -75,7 +75,7 @@ public class Login {
 						if (value.getSenha().equals(senha)) {
 							loginVerif = true;
 							usuarioFunc = value;
-							String sucssPrograma = "Logado com sucesso! Bem vindo "+value.getNome()+"!";
+							String sucssPrograma = "Logado com sucesso! Bem vindo " + value.getNome() + "!";
 							tipoPessoaLogin = 1;
 							JOptionPane.showMessageDialog(null, sucssPrograma);
 							break;

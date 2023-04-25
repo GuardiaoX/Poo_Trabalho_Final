@@ -7,13 +7,16 @@ import javax.swing.JOptionPane;
 
 import br.com.poo.enums.TipoFuncionario;
 import br.com.poo.cargos.Funcionario;
+import br.com.poo.cargos.Gerente;
+import br.com.poo.contas.ContaPoupanca;
 
 public class MenuFuncionario {
 	public static void telaFuncionario() throws IOException {
 		Object[] opcoesFuncionario = {};
-		Object[] opcoesPresidente = { "1. Capital Total no Banco", "2. Relatório Diretores e Gerentes" };
-		Object[] opcoesDiretor = { "1. Relatório de Clientes", "2. Relatório de Gerentes" };
-		Object[] opcoesGerente = { "1. Relatório Total Contas", "2. Relatório de Conta" };
+		Object[] opcoesPresidente = {"1. Voltar Tela de Login", "2. Capital Total no Banco"};
+		Object[] opcoesDiretor = {"1. Voltar Tela de Login", "2. Relatório de Clientes"};
+		Object[] opcoesGerente = {"1. Voltar Tela de Login",  "2. Relatório de Conta da Agencia"};
+		String[] opcaoBinar = { "Sim", "Não" };
 		Funcionario func = Login.usuarioFunc;
 		String tipoFunc = func.getTipoFuncionario();
 		String imprssSucss = "Relatório impresso com sucesso!";
@@ -33,29 +36,39 @@ public class MenuFuncionario {
 			Object valorSelecionadofun = JOptionPane.showInputDialog(null, "Menu Principal", "Opções",
 					JOptionPane.INFORMATION_MESSAGE, null, opcoesFuncionario, opcoesFuncionario[0]);
 			switch (valorSelecionadofun.toString().substring(0, 1)) {
-			case "1":
+			case "1":	
+				if (JOptionPane.showOptionDialog(null, "Gostaria de voltar à tela de login?", null, 0,
+						JOptionPane.INFORMATION_MESSAGE, null, opcaoBinar, opcaoBinar[0]) == 0) {
+					SistemaInterno.main(new String[0]);
+					break;
+				} else {
+					break;
+				}
+			case "2":
 				if (tipoFuncId == 1) {
-					Relatorio.relatorioCapitalDoBanco(new BigDecimal("4000.50"));
-					JOptionPane.showInternalMessageDialog(null, imprssSucss);		
+					Relatorio.relatorioCapitalDoBanco();
+					JOptionPane.showInternalMessageDialog(null, imprssSucss);
 				} else if (tipoFuncId == 2) {
 					Relatorio.relatorioClientesDoBanco();
 					JOptionPane.showInternalMessageDialog(null, imprssSucss);
 				} else if (tipoFuncId == 3) {
-					JOptionPane.showInternalMessageDialog(null, faltouTempo);
+					Gerente funcRefd = (Gerente) func;
+					Relatorio.relatorioContasDaAgencia(funcRefd.getAgenciaGerente());
+					JOptionPane.showInternalMessageDialog(null, imprssSucss);
+					break;
 				}
 				break;
-			case "2":
+			case "3":
 				if (tipoFuncId == 1) {
 					JOptionPane.showInternalMessageDialog(null, faltouTempo);
 				} else if (tipoFuncId == 2) {
 					JOptionPane.showInternalMessageDialog(null, faltouTempo);
 					break;
-				} else if (tipoFuncId == 3) {
-					JOptionPane.showInternalMessageDialog(null, faltouTempo);
-					break;
 				}
+			default:
 				break;
 			}
 		}
+
 	}
 }

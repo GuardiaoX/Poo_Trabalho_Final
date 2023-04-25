@@ -16,10 +16,9 @@ public class MenuCliente {
 
 	public static void telaCliente() throws IOException {
 		Object[] opcoesCliente = {};
-		Object[] opcoesContaCorrente = { "1. Verificar saldo", "2. Sacar", "3. Depositar", "4. Transferir",
-				"5. Relatório de Tributos" };
+		Object[] opcoesContaCorrente = { "1. Voltar Tela de Login", "2. Verificar saldo", "3. Sacar", "4. Depositar", "5. Transferir" };
 		Object[] opcoesContaPoupanca = { "1. Comprovante de Saldo", "2. Saque", "3. Depósito", "4. Transferência",
-				"5. Simulação de Rendimento", "6. Comprovante de Rendimento" };
+				"6. Simulação de Rendimento", "7. Comprovante de Rendimento" };
 		String[] opcaoBinar = { "Sim", "Não" };
 		Conta conta = Login.usuarioCl;
 		String contaDest;
@@ -34,7 +33,6 @@ public class MenuCliente {
 		if (tipoConta.equals(TipoConta.CONT_CORR.getTipoConta())) {
 			opcoesCliente = opcoesContaCorrente;
 			tipoContaId = 1;
-
 		} else if (tipoConta.equals(TipoConta.CONT_POU.getTipoConta())) {
 			opcoesCliente = opcoesContaPoupanca;
 			tipoContaId = 2;
@@ -42,14 +40,23 @@ public class MenuCliente {
 		// Inicia o ciclo do menu
 		while (true) {
 			Object valorSelecionadocli = JOptionPane.showInputDialog(null, "Menu", "Opção",
-					JOptionPane.INFORMATION_MESSAGE, null, opcoesCliente, opcoesCliente[0]);
+					JOptionPane.INFORMATION_MESSAGE, null, opcoesCliente, opcoesCliente[0]);		
+			
 			switch (valorSelecionadocli.toString().substring(0, 1)) {
-			case "1":
+			case "1":	
+				if (JOptionPane.showOptionDialog(null, "Gostaria de voltar à tela de login?", null, 0,
+						JOptionPane.INFORMATION_MESSAGE, null, opcaoBinar, opcaoBinar[0]) == 0) {
+					SistemaInterno.main(new String[0]);
+					break;
+				} else {
+					break;
+				}
+			case "2":
 				// Saldo
 				Relatorio.comprovanteSaldo(conta);
 				JOptionPane.showMessageDialog(null, imprssSucss);
 				break;
-			case "2":
+			case "3":
 				// Sacar
 				try {
 					String valor = JOptionPane.showInputDialog(
@@ -71,7 +78,7 @@ public class MenuCliente {
 					JOptionPane.showMessageDialog(null, erro);
 				}
 				break;
-			case "3":
+			case "4":
 				// Depositar
 				try {
 					String valor = JOptionPane.showInputDialog(
@@ -90,12 +97,11 @@ public class MenuCliente {
 					} else {
 						break;
 					}
-
 				} catch (java.lang.NumberFormatException e) {
 					JOptionPane.showMessageDialog(null, erro);
 				}
 				break;
-			case "4":
+			case "5":
 				// Trasferir
 				try {
 					String valor = JOptionPane.showInputDialog(
@@ -134,8 +140,8 @@ public class MenuCliente {
 					JOptionPane.showMessageDialog(null, erro);
 				}
 				break;
-			// Simulado Rendimento
-			case "5":
+			case "6":
+				// Simulado Rendimento
 				String fimDia;
 				fimDia = JOptionPane.showInputDialog("Até dia: ");
 				String fimMes;
@@ -152,7 +158,8 @@ public class MenuCliente {
 						contaRefu.getDiferencaDias(), rendiAcumuladoSimulado);
 				JOptionPane.showInternalMessageDialog(null, CompSucss);
 				break;
-			case "6":
+
+			case "7":
 				// Rendimento
 				ContaPoupanca contaRefd = (ContaPoupanca) conta;
 				Boolean retornoRendiSaldo = contaRefd.rendiSobreSaldo();
@@ -161,10 +168,10 @@ public class MenuCliente {
 					JOptionPane.showInternalMessageDialog(null, CompSucss);
 				}
 				break;
+
 			default:
 				break;
 			}
-			break;
 		}
 	}
 }

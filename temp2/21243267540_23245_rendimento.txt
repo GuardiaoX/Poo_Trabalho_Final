@@ -1,10 +1,9 @@
 ===============================================
-COMPROVANTE DE DEPÓSITO
+              COMPROVANTE DE RENDIMENTO         
 ===============================================
-Nome: Cadu
-CPF: 21243267540
-Agência: 23245
 Conta: 321245
-Valor: R$ 8000.00
-Realizado em: 24/04/2023 21:12:50
+Titular: Cadu
+Rendimento Acumulado: R$2.000000
+Saldo: R$5002.000000
+Realizado em: 24/04/2023 19:34:09
 ===============================================
